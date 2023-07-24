@@ -1,4 +1,4 @@
-![Starter WordPress Theme](https://raw.githubusercontent.com/inkogn1to/x-project/master/src/img/x-project-wp.jpg)
+![Starter WordPress Theme](https://github.com/evgeniy-vashchuk/x-project-wp/blob/master/img/x-project-wp.jpg?raw=true)
 
 ---
 
