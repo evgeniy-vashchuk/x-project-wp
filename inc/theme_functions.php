@@ -103,11 +103,26 @@ function x_project_wp_theme_plugins() {
 show_admin_bar(false);
 
 // THEME OPTIONS TAB IN APPEARANCE ================================================================
-if( function_exists('acf_add_options_page') ) {
-	acf_add_options_sub_page( array(
-		'title'  => 'Theme Options',
-		'parent' => 'themes.php',
-	) );
+if (function_exists('acf_add_options_page')) {
+	acf_add_options_page(array(
+			'page_title'    => 'Theme General Settings',
+			'menu_title'    => 'Theme Settings',
+			'menu_slug'     => 'theme-general-settings',
+			'capability'    => 'edit_posts',
+			'redirect'      => false
+	));
+
+	acf_add_options_sub_page(array(
+			'page_title'    => 'Theme Header Settings',
+			'menu_title'    => 'Header',
+			'parent_slug'   => 'theme-general-settings',
+	));
+
+	acf_add_options_sub_page(array(
+			'page_title'    => 'Theme Footer Settings',
+			'menu_title'    => 'Footer',
+			'parent_slug'   => 'theme-general-settings',
+	));
 }
 
 // RENAME DEFAULT TEMPLATE
@@ -210,7 +225,7 @@ function pagination() {
 	// Link to current page, plus 2 pages in either direction if necessary
 	sort( $links );
 	foreach ( (array) $links as $link ) {
-			$class = $paged == $link ? ' class="' . $listItemClass . $activeClass . '"' : '';
+			$class = $paged == $link ? ' class="' . $listItemClass . ' ' . $activeClass . '"' : '';
 			printf( '<li%s class="' . $listItemClass . '"><a href="%s" class="' . $listLinkClass . '">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
 	}
 
@@ -229,3 +244,10 @@ function pagination() {
 
 	echo '</ul></nav>' . "\n";
 }
+
+// DECLARING WOOCOMMERCE SUPPORT IN THEME
+function mytheme_add_woocommerce_support() {
+	add_theme_support( 'woocommerce' );
+}
+
+add_action( 'after_setup_theme', 'mytheme_add_woocommerce_support' );

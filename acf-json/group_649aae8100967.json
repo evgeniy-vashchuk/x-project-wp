@@ -1,24 +1,7 @@
 {
     "key": "group_649aae8100967",
-    "title": "Global",
+    "title": "Theme Settings",
     "fields": [
-        {
-            "key": "field_649aaeb52cd21",
-            "label": "Global",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
         {
             "key": "field_649aaed72cd22",
             "label": "Image for sharing",
@@ -63,40 +46,6 @@
             "rows": "",
             "placeholder": "",
             "new_lines": ""
-        },
-        {
-            "key": "field_649ab3218ca73",
-            "label": "Header",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_649ab3328ca74",
-            "label": "Footer",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
         }
     ],
     "location": [
@@ -104,7 +53,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "acf-options-theme-options"
+                "value": "theme-general-settings"
             }
         ]
     ],
@@ -117,5 +66,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1690113549
+    "modified": 1698078056
 }
