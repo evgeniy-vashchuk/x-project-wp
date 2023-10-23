@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?> class="no-js">
 
 <head>
-	<title><?php bloginfo('name'); ?> | <?php echo is_front_page() ? "Home" : wp_title(''); ?></title>
+	<title><?php bloginfo('name'); ?> — <?php echo is_front_page() ? "Home" : wp_title(''); ?></title>
 	<meta name="description" content="<?php bloginfo('description'); ?>">
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="format-detection" content="telephone=no">
