@@ -1,13 +1,14 @@
 <?php
-	$text = get_sub_field("text");
+  $hide_section = get_sub_field("hide_section");
+  $text = get_sub_field("text");
 ?>
 
+<?php if (!$hide_section && $text) : ?>
 <!-- SECTION -->
 <section class="section">
-	<div class="container">
-		<?php if ($text) : ?>
-			<p><?php echo $text; ?></p>
-		<?php endif; ?>
-	</div>
+  <div class="container">
+    <?php echo $text; ?>
+  </div>
 </section>
 <!-- SECTION END -->
+<?php endif; ?>
