@@ -20,6 +20,12 @@ custom size (needed post ID)
 <img src="<?php echo get_the_post_thumbnail_url(get_queried_object_id(), "lg"); ?>" alt="Image">
 */
 
+// image from media by image ID
+/*
+$image_url = wp_get_attachment_image_src($image_id, "lg")[0];
+esc_url($image_url)
+*/
+
 // acf images
 /*
 $image = get_sub_field("image");
