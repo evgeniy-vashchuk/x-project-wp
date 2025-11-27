@@ -1,5 +1,7 @@
 <?php
 
+define('LOCALIZATION', 'x-project-wp');
+
 // Images settings
 include(get_template_directory() . '/inc/images.php');
 

@@ -18,6 +18,7 @@ full size
 
 custom size (needed post ID)
 <img src="<?php echo get_the_post_thumbnail_url(get_queried_object_id(), "lg"); ?>" alt="Image">
+<img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), "lg"); ?>" alt="Image">
 */
 
 // image from media by image ID

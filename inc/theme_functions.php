@@ -122,34 +122,40 @@ show_admin_bar(false);
 add_theme_support("html5", array("comment-list", "comment-form", "search-form", "gallery", "caption"));
 
 // LOCALIZATION SUPPORT ================================================================
-load_theme_textdomain("x-project-wp", get_template_directory() . "/languages");
+load_theme_textdomain(LOCALIZATION, get_template_directory() . "/languages");
+
+// REGISTER NAVIGATION MENUS ================================================================
+register_nav_menus(array(
+  "header" => __("Header Menu", LOCALIZATION),
+  "footer" => __("Footer Menu", LOCALIZATION),
+));
 
 // THEME OPTIONS TAB IN APPEARANCE ================================================================
 if (function_exists("acf_add_options_page")) {
   acf_add_options_page(array(
-      "page_title"    => "Theme General Settings",
-      "menu_title"    => "Theme Settings",
-      "menu_slug"     => "theme-general-settings",
-      "capability"    => "edit_posts",
-      "redirect"      => false
+    "page_title"    => __("Theme General Settings", LOCALIZATION),
+    "menu_title"    => __("Theme Settings", LOCALIZATION),
+    "menu_slug"     => "theme-general-settings",
+    "capability"    => "edit_posts",
+    "redirect"      => false
   ));
 
   acf_add_options_sub_page(array(
-      "page_title"    => "Theme Header Settings",
-      "menu_title"    => "Header",
-      "parent_slug"   => "theme-general-settings",
+    "page_title"    => __("Theme Header Settings", LOCALIZATION),
+    "menu_title"    => __("Header", LOCALIZATION),
+    "parent_slug"   => "theme-general-settings",
   ));
 
   acf_add_options_sub_page(array(
-      "page_title"    => "Theme Footer Settings",
-      "menu_title"    => "Footer",
-      "parent_slug"   => "theme-general-settings",
+    "page_title"    => __("Theme Footer Settings", LOCALIZATION),
+    "menu_title"    => __("Footer", LOCALIZATION),
+    "parent_slug"   => "theme-general-settings",
   ));
 }
 
 // RENAME DEFAULT TEMPLATE
 add_filter("default_page_template_title", function() {
-  return __("Flexible content page", "x_project_wp");
+  return __("Flexible content page", LOCALIZATION);
 });
 
 // GOOGLE FONTS ================================================================
@@ -165,6 +171,12 @@ remove_action("wp_print_styles", "print_emoji_styles");
 
 // REMOVE <p> AND <br> FROM CF7 ================================================================
 add_filter( "wpcf7_autop_or_not", "__return_false" );
+
+// REMOVE EMPTY PARAGRAPHS FROM CONTENT ================================================================
+add_filter('the_content', function ($content) {
+  $content = preg_replace('/<p>(\s|&nbsp;)*<\/p>/i', '', $content);
+  return $content;
+}, 20);
 
 // PAGINATION ================================================================
 function pagination() {
@@ -200,11 +212,11 @@ function pagination() {
       $links[] = $paged + 1;
   }
 
-  echo '<nav aria-label="Blog navigation"><ul class="' . $listClass . ' mb-0 justify-content-center">' . "\n";
+  echo '<nav aria-label="' . __("Pagination", LOCALIZATION) . '"><ul class="' . $listClass . ' mb-0 justify-content-center">' . "\n";
 
   // Previous Post Link
   if ( get_previous_posts_link() )
-      printf( '<li class="' . $listItemClass . '"><a href="%s" class="' . $listLinkClass . '" aria-label="Previous"><span aria-hidden="true"></span></a></li>' . "\n", get_previous_posts_page_link() );
+      printf( '<li class="' . $listItemClass . '"><a href="%s" class="' . $listLinkClass . '" aria-label="' . __("Previous", LOCALIZATION) . '"><span aria-hidden="true"></span></a></li>' . "\n", get_previous_posts_page_link() );
 
   // Link to first page, plus ellipses if necessary
   if ( ! in_array( 1, $links ) ) {
@@ -234,17 +246,17 @@ function pagination() {
 
   // Next Post Link
   if ( get_next_posts_link() )
-      printf( '<li class="' . $listItemClass . '"><a href="%s" class="' . $listLinkClass . '" aria-label="Next"><span aria-hidden="true"></span></a></li>' . "\n", get_next_posts_page_link() );
+      printf( '<li class="' . $listItemClass . '"><a href="%s" class="' . $listLinkClass . '" aria-label="' . __("Next", LOCALIZATION) . '"><span aria-hidden="true"></span></a></li>' . "\n", get_next_posts_page_link() );
 
   echo '</ul></nav>' . "\n";
 }
 
 // DECLARING WOOCOMMERCE SUPPORT IN THEME
-function mytheme_add_woocommerce_support() {
+function x_project_wp_add_woocommerce_support() {
   add_theme_support( "woocommerce" );
 }
 
-add_action( "after_setup_theme", "mytheme_add_woocommerce_support" );
+add_action( "after_setup_theme", "x_project_wp_add_woocommerce_support" );
 
 // REMOVE CONTENT EDITOR ================================================================
 function remove_content_editor() {
