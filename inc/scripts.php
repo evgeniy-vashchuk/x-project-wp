@@ -6,11 +6,11 @@ function base_scripts_styles() {
     $in_footer = true;
 
     // Loads JavaScript
-    wp_register_script('main-js', get_template_directory_uri() . '/js/main.min.js', array(), '1.0.0', $in_footer);
+    wp_register_script('main-js', get_template_directory_uri() . '/js/main.js', array(), '1.0.0', $in_footer);
     wp_enqueue_script('main-js'); // Enqueue it!
 
     // Loads CSS
-    wp_register_style('main-css', get_template_directory_uri() . '/style.css', array());
+    wp_register_style('main-css', get_template_directory_uri() . '/main.css', array());
     wp_enqueue_style('main-css'); // Enqueue it!
   }
 }
