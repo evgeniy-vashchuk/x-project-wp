@@ -10,7 +10,7 @@ function base_scripts_styles() {
     wp_enqueue_script('main-js'); // Enqueue it!
 
     // Loads CSS
-    wp_register_style('main-css', get_template_directory_uri() . '/main.css', array());
+    wp_register_style('main-css', get_template_directory_uri() . '/style.css', array());
     wp_enqueue_style('main-css'); // Enqueue it!
   }
 }
