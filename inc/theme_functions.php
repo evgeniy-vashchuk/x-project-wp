@@ -151,6 +151,12 @@ if (function_exists("acf_add_options_page")) {
     "menu_title"    => __("Footer", LOCALIZATION),
     "parent_slug"   => "theme-general-settings",
   ));
+
+  acf_add_options_sub_page(array(
+    "page_title"    => __("Theme 404 Page Settings", LOCALIZATION),
+    "menu_title"    => __("404 Page", LOCALIZATION),
+    "parent_slug"   => "theme-general-settings",
+  ));
 }
 
 // RENAME DEFAULT TEMPLATE

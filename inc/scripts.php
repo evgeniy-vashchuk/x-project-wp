@@ -6,7 +6,7 @@ function base_scripts_styles() {
     $in_footer = true;
 
     // Loads JavaScript
-    wp_register_script('main-js', get_template_directory_uri() . '/js/main.js', array(), '1.0.0', $in_footer);
+    wp_register_script('main-js', get_template_directory_uri() . '/js/main.min.js', array(), '1.0.0', $in_footer);
     wp_enqueue_script('main-js'); // Enqueue it!
 
     // Loads CSS
